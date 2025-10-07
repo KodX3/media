@@ -20,29 +20,6 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.0'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24'
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-tasks.register("clean", Delete) {
-    delete rootProject.buildDir
-}
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
         classpath 'com.android.tools.build:gradle:8.8.1'
         classpath 'com.google.android.gms:strict-version-matcher-plugin:1.2.4'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20'
@@ -67,4 +44,29 @@ allprojects {
         buildDir = "${externalBuildDir}/${project.name}"
     }
     group = 'androidx.media3'
+}
+
+// Root build.gradle (for JitPack AAR build)
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
 }
