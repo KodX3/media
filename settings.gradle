@@ -78,3 +78,12 @@ include(":library")
 
 // ✅ Point to your target library folder
 project(":library").projectDir = new File(rootDir, "libraries/session")
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
