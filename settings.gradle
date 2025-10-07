@@ -69,3 +69,12 @@ include modulePrefix + 'doc-samples'
 project(modulePrefix + 'doc-samples').projectDir = new File(rootDir, 'docsamples')
 
 apply from: 'core_settings.gradle'
+
+// Simplified settings.gradle for JitPack AAR build
+rootProject.name = "media-release"
+
+// Choose which module to build as AAR
+include(":library")
+
+// ✅ Point to your target library folder
+project(":library").projectDir = new File(rootDir, "libraries/session")
